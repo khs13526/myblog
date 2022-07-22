@@ -24,23 +24,23 @@ public class PostController {
         return postRepository.save(post);
     }
 
-    @GetMapping("/api/courses")
+    @GetMapping("/api/posts")
     public List<com.sparta.myblog.domain.PostMapping> getCourses() {
         return postRepository.findAllBy(Sort.by(Sort.Direction.DESC, "createdAt"));
     }
 
-    @GetMapping("/api/courses/{id}")
+    @GetMapping("/api/posts/{id}")
     public List<PostDetailMapping> getCourseById(@PathVariable Long id) {
         return postRepository.findPostDetailById(id);
     }
 
-    @GetMapping("/api/courses/{id}/password")
+    @GetMapping("/api/posts/{id}/password")
     public boolean checkPassword(@PathVariable Long id, @RequestParam("password") String password) {
         return postService.checkPassword(id, password);
     }
 
 
-    @PutMapping("/api/courses/{id}")
+    @PutMapping("/api/posts/{id}")
     public String updateCourse(@PathVariable Long id, @RequestBody PostRequestDto requestDto, @RequestParam("password") String password) {
         if(postService.checkPassword(id, password)){
             return postService.update(id, requestDto);
@@ -49,7 +49,7 @@ public class PostController {
         }
     }
 
-    @DeleteMapping("/api/courses/{id}")
+    @DeleteMapping("/api/posts/{id}")
     public String deleteCourse(@PathVariable Long id, @RequestParam("password") String password) {
         if(postService.checkPassword(id, password)){
             postRepository.deleteById(id);
