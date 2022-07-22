@@ -12,14 +12,26 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class PostService {
-    private final PostRepository courseRepository;
+    private final PostRepository postRepository;
 
     @Transactional // SQL 쿼리가 일어나야 함을 스프링에게 알려줌
-    public Long update(Long id, PostRequestDto requestDto) {
-        Post post1 = courseRepository.findById(id).orElseThrow(
+    public String update(Long id, PostRequestDto requestDto) {
+        Post post1 = postRepository.findById(id).orElseThrow(
                 () -> new IllegalArgumentException("해당 아이디가 존재하지 않습니다.")
         );
         post1.update(requestDto);
-        return post1.getId();
+        return "수정 완료";
     }
+
+    public boolean checkPassword(Long id, String password){
+        Post post1 = postRepository.findById(id).orElseThrow(
+                () -> new IllegalArgumentException("해당 아이디가 존재하지 않습니다.")
+        );
+        if(post1.getPassword().equals(password)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }

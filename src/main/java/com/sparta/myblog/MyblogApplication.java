@@ -21,18 +21,8 @@ public class MyblogApplication {
     @Bean
     public CommandLineRunner demo(PostRepository postRepository, PostService postService) {
         return (args) -> {
-            postRepository.save(new Post("프론트엔드의 꽃, 리액트", "임민영", "행복한 날이었다.", "1234"));
-
+            postRepository.save(new Post("오늘은 jpa에 대해서 배웠다.", "김현서", "매우 재미있었다.", "1234"));
             System.out.println("데이터 인쇄");
-//            List<Post> postList = postRepository.findAll();
-//            for (int i=0; i<postList.size(); i++) {
-//                Post post = postList.get(i);
-//                System.out.println(post.getId());
-//                System.out.println(post.getTitle());
-//                System.out.println(post.getWriter());
-//                System.out.println(post.getContent());
-//                System.out.println(post.getPassword());
-//            }
         };
     }
 }
