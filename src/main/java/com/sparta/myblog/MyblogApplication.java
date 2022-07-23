@@ -21,7 +21,7 @@ public class MyblogApplication {
     @Bean
     public CommandLineRunner demo(PostRepository postRepository, PostService postService) {
         return (args) -> {
-            postRepository.save(new Post("오늘은 jpa에 대해서 배웠다.", "김현서", "매우 재미있었다.", "1234"));
+//            postRepository.save(new Post("오늘은 jpa에 대해서 배웠다.", "김현서", "매우 재미있었다.", "1234"));
             System.out.println("데이터 인쇄");
         };
     }

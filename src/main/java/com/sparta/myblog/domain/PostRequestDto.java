@@ -12,5 +12,4 @@ public class PostRequestDto {
     private final String writer;
     private final String content;
     private final String password;
-
 }
