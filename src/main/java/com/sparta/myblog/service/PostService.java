@@ -1,5 +1,6 @@
 package com.sparta.myblog.service;
 
+import com.sparta.myblog.AESUtil.AES256;
 import com.sparta.myblog.domain.Post;
 import com.sparta.myblog.domain.PostDetailMapping;
 import com.sparta.myblog.domain.PostRepository;
@@ -24,12 +25,20 @@ public class PostService {
         return postRepository.findPostDetailById(id);
     }
 
-    public boolean checkPassword(Long id, String password){
+    public boolean checkPassword(Long id, String password) throws Exception {
         Post post1 = postRepository.findById(id).orElseThrow(
                 () -> new IllegalArgumentException("해당 아이디가 존재하지 않습니다.")
         );
-        return post1.getPassword().equals(password);
+        AES256 aes256 = new AES256();
+        return post1.getPassword().equals(aes256.encrypt(password));
     }
 
+    public Long encryptPaswword(PostRequestDto requestDto) throws Exception {
+        AES256 aes256 = new AES256();
+        requestDto.setPassword(aes256.encrypt(requestDto.getPassword()));
+        Post post = new Post(requestDto);
+        postRepository.save(post);
+        return post.getId();
+    }
 
 }

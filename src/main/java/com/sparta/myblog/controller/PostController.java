@@ -21,10 +21,8 @@ public class PostController {
     private final PostService postService;
 
     @PostMapping("/api/post")
-    public ApiResult<List<PostDetailMapping>> createCourse(@RequestBody PostRequestDto requestDto) {
-        Post post = new Post(requestDto);
-        postRepository.save(post);
-        return ApiUtils.success(postRepository.findPostDetailById(post.getId()));
+    public ApiResult<List<PostDetailMapping>> createCourse(@RequestBody PostRequestDto requestDto) throws Exception {
+        return ApiUtils.success(postRepository.findPostDetailById(postService.encryptPaswword(requestDto)));
     }
 
     @GetMapping("/api/post")
@@ -38,13 +36,13 @@ public class PostController {
     }
 
     @GetMapping("/api/post/password/{id}")
-    public boolean checkPassword(@PathVariable Long id, @RequestParam("password") String password) {
+    public boolean checkPassword(@PathVariable Long id, @RequestParam("password") String password) throws Exception {
         return postService.checkPassword(id, password);
     }
 
 
     @PutMapping("/api/post/{id}")
-    public ApiResult<?> updateCourse(@PathVariable Long id, @RequestBody PostRequestDto requestDto, @RequestParam("password") String password) {
+    public ApiResult<?> updateCourse(@PathVariable Long id, @RequestBody PostRequestDto requestDto, @RequestParam("password") String password) throws Exception {
         if(postService.checkPassword(id, password)){
             return ApiUtils.success(postService.update(id, requestDto));
         } else {
@@ -53,7 +51,7 @@ public class PostController {
     }
 
     @DeleteMapping("/api/post/{id}")
-    public ApiResult<?> deleteCourse(@PathVariable Long id, @RequestParam("password") String password) {
+    public ApiResult<?> deleteCourse(@PathVariable Long id, @RequestParam("password") String password) throws Exception {
         if(postService.checkPassword(id, password)){
             postRepository.deleteById(id);
             return ApiUtils.success(true);
