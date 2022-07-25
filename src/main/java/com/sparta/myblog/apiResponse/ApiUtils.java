@@ -8,4 +8,5 @@ public class ApiUtils {
     public static ApiResult<?> error(String message, int status){
         return new ApiResult<>(false, false, new ApiError(message, status));
     }
+
 }

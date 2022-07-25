@@ -1,8 +1,7 @@
 package com.sparta.myblog.domain;
-
+import com.fasterxml.jackson.annotation.JsonIgnoreType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 @Getter
 @Entity
