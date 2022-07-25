@@ -33,12 +33,11 @@ public class PostService {
         return post1.getPassword().equals(aes256.encrypt(password));
     }
 
-    public Long encryptPaswword(PostRequestDto requestDto) throws Exception {
+    public Long encryptPassword(PostRequestDto requestDto) throws Exception {
         AES256 aes256 = new AES256();
         requestDto.setPassword(aes256.encrypt(requestDto.getPassword()));
         Post post = new Post(requestDto);
         postRepository.save(post);
         return post.getId();
     }
-
 }

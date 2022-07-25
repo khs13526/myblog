@@ -2,7 +2,6 @@ package com.sparta.myblog.controller;
 
 import com.sparta.myblog.apiResponse.ApiResult;
 import com.sparta.myblog.apiResponse.ApiUtils;
-import com.sparta.myblog.domain.Post;
 import com.sparta.myblog.domain.PostDetailMapping;
 import com.sparta.myblog.domain.PostRepository;
 import com.sparta.myblog.domain.PostRequestDto;
@@ -21,17 +20,17 @@ public class PostController {
     private final PostService postService;
 
     @PostMapping("/api/post")
-    public ApiResult<List<PostDetailMapping>> createCourse(@RequestBody PostRequestDto requestDto) throws Exception {
-        return ApiUtils.success(postRepository.findPostDetailById(postService.encryptPaswword(requestDto)));
+    public ApiResult<List<PostDetailMapping>> createPost(@RequestBody PostRequestDto requestDto) throws Exception {
+        return ApiUtils.success(postRepository.findPostDetailById(postService.encryptPassword(requestDto)));
     }
 
     @GetMapping("/api/post")
-    public ApiResult<List<com.sparta.myblog.domain.PostMapping>> getCourses() {
+    public ApiResult<List<com.sparta.myblog.domain.PostMapping>> getPosts() {
         return ApiUtils.success(postRepository.findAllBy(Sort.by(Sort.Direction.DESC, "createdAt")));
     }
 
     @GetMapping("/api/post/{id}")
-    public ApiResult<List<PostDetailMapping>> getCourseById(@PathVariable Long id) {
+    public ApiResult<List<PostDetailMapping>> getPostById(@PathVariable Long id) {
         return ApiUtils.success(postRepository.findPostDetailById(id));
     }
 
@@ -42,7 +41,7 @@ public class PostController {
 
 
     @PutMapping("/api/post/{id}")
-    public ApiResult<?> updateCourse(@PathVariable Long id, @RequestBody PostRequestDto requestDto, @RequestParam("password") String password) throws Exception {
+    public ApiResult<?> updatePost(@PathVariable Long id, @RequestBody PostRequestDto requestDto, @RequestParam("password") String password) throws Exception {
         if(postService.checkPassword(id, password)){
             return ApiUtils.success(postService.update(id, requestDto));
         } else {
@@ -51,7 +50,7 @@ public class PostController {
     }
 
     @DeleteMapping("/api/post/{id}")
-    public ApiResult<?> deleteCourse(@PathVariable Long id, @RequestParam("password") String password) throws Exception {
+    public ApiResult<?> deletePost(@PathVariable Long id, @RequestParam("password") String password) throws Exception {
         if(postService.checkPassword(id, password)){
             postRepository.deleteById(id);
             return ApiUtils.success(true);
