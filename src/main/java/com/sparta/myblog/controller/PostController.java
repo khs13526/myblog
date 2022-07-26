@@ -28,7 +28,7 @@ public class PostController {
     }
 
     @GetMapping("/post")
-    public ApiResult<List<com.sparta.myblog.domain.PostMapping>> getPosts() throws JsonProcessingException {
+    public ApiResult<List<PostDetailMapping>> getPosts() throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper().registerModule(new JavaTimeModule());
         log.info(mapper.writeValueAsString(postRepository.findAllBy(Sort.by(Sort.Direction.DESC, "createdAt"))));
         log.info(postRepository.findAllBy(Sort.by(Sort.Direction.DESC, "createdAt")).toString());
@@ -47,21 +47,13 @@ public class PostController {
 
 
     @PutMapping("/post/{id}")
-    public ApiResult<?> updatePost(@PathVariable Long id, @RequestBody PostRequestDto requestDto, @RequestParam("password") String password) throws Exception {
-        if(postService.checkPassword(id, password)){
+    public ApiResult<?> updatePost(@PathVariable Long id, @RequestBody PostRequestDto requestDto) throws Exception {
             return ApiUtils.success(postService.update(id, requestDto));
-        } else {
-            return ApiUtils.error("error",400);
-        }
     }
 
     @DeleteMapping("/post/{id}")
-    public ApiResult<?> deletePost(@PathVariable Long id, @RequestParam("password") String password) throws Exception {
-        if(postService.checkPassword(id, password)){
+    public ApiResult<?> deletePost(@PathVariable Long id) {
             postRepository.deleteById(id);
             return ApiUtils.success(true);
-        }  else {
-            return ApiUtils.error("error", 400);
-        }
     }
 }
