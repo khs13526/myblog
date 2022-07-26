@@ -24,18 +24,16 @@ myblog backend server
 3. RESTful한 API를 설계했나요? 어떤 부분이 그런가요? 어떤 부분이 그렇지 않나요?
 
 
-    각각 요청에 맞는 request를 하여서 RESTFUL하다고 생각합니다. 다만 비밀번호를 CHECK할때 GET요청을 사용하였는데 이 부분이 RESTFUL하지
+    각각 요청에 맞는 request를 하였습니다. 다만 비밀번호를 CHECK할때 GET요청을 사용하였는데 이 부분이 RESTFUL하지
     못하다고 생각합니다 PW를 CHECK할때는 어떤 request를 해야할지 좀 더 고민해봐야겠습니다.  
   
 4. 적절한 관심사 분리를 적용하였나요? (Controller, Repository, Service)  
 
 
     View가 없는 API만을 만들었기때문에 RestController를 이용하였고 Repository는 JpaRepository를 상속 받아서 이용하였고 Service에는 update와 checkPassword
-    그리고 password를 복호화 해주는 encryptPassword 메소드를 만들어서 이용하였습니다.  
-    Controller 부분에서 checkPassword 값에 따라 리턴값이 다른데 이 부분이 맞는지 조금 헷갈립니다. 
+    그리고 password를 복호화하여 저장해주는 save 메소드를 만들어서 이용하였습니다.   
   
 5. 작성한 코드에서 빈(Bean)을 모두 찾아보세요!
-
 
     의존성 주입을 한 PostRepository와 PostService가 있을 것 같습니다.  
   
