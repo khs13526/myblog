@@ -24,7 +24,7 @@ myblog backend server
 3. RESTful한 API를 설계했나요? 어떤 부분이 그런가요? 어떤 부분이 그렇지 않나요?
 
 
-    각각 요청에 맞는 request를 하여서 RESTFUL하다고 생각합니다. 다만 비밀번호를 CHECK할때 GET요청을 사용하였는데 이 부분이 RESTFUL하지
+    각각 요청에 맞는 request를 하였습니다. 다만 비밀번호를 CHECK할때 GET요청을 사용하였는데 이 부분이 RESTFUL하지
     못하다고 생각합니다 PW를 CHECK할때는 어떤 request를 해야할지 좀 더 고민해봐야겠습니다.  
   
 4. 적절한 관심사 분리를 적용하였나요? (Controller, Repository, Service)  
