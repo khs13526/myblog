@@ -14,7 +14,9 @@ myblog backend server
     게시글의 수정은 http의 PUT요청을 하고 게시글의 id와 password를 param으로 받아서 password가 db의 password와 일치하였을 경우 
     DTO의 생성자를 이용하여 update하고 jpa의 save메소드를 이용하여 저장하였습니다.
     게시글의 삭제는 http의 DELETE요청을 하고 게시글의 id와 password를 param으로 받아서 password가 db의 password와 일치하였을 경우
-    jpa의 deleteById 메소드를 이용하여 삭제하였습니다.  
+    jpa의 deleteById 메소드를 이용하여 삭제하였습니다.
+    (2022-07-26) 추가  
+    요구사항에 비밀번호를 입력받지않고 수정 삭제 가능하게 하게 하라고 바뀌어서 수정하였습니다.
   
 2. 어떤 상황에 어떤 방식의 request를 써야하나요?
 
