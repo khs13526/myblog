@@ -40,10 +40,11 @@ public class PostController {
         return ApiUtils.success(postRepository.findPostDetailById(id));
     }
 
-    @GetMapping("/post/password/{id}")
-    public boolean checkPassword(@PathVariable Long id, @RequestParam("password") String password) throws Exception {
-        return postService.checkPassword(id, password);
+    @PostMapping("/post/{id}")
+    public ApiResult<Boolean> checkPassword(@PathVariable Long id, @RequestBody PostRequestDto requestDto) throws Exception {
+        return ApiUtils.success(postService.checkPassword(id, requestDto.getPassword()));
     }
+
 
     @PutMapping("/post/{id}")
     public ApiResult<?> updatePost(@PathVariable Long id, @RequestBody PostRequestDto requestDto, @RequestParam("password") String password) throws Exception {
