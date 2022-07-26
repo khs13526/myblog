@@ -7,7 +7,7 @@ myblog backend server
 
 # API 명세서
 
-![API명세서](https://user-images.githubusercontent.com/104721095/180597363-881fb3ff-65e3-4c77-9fb6-e119cb9a4029.png)
+![명세서](https://user-images.githubusercontent.com/104721095/180922675-16d605db-58ae-431b-a56d-45745e9e3593.png)
 
 1. 수정, 삭제 API의 request를 어떤 방식으로 사용하셨나요? (param, query, body)  
 
