@@ -5,6 +5,10 @@ myblog backend server
 
 ![Mind Map](https://user-images.githubusercontent.com/104721095/180597197-bfdbe91a-b5c3-4365-b2b5-43594bae9b1f.jpg)
 
+(2022-07-26) 추가  
+요구사항에 비밀번호를 입력받지않고 수정 삭제 가능하게 하게 하라고 바뀌어서 비밀번호를 확인하지 않고 수정 삭제가 가능합니다.
+ 
+
 # API 명세서
 
 ![명세서](https://user-images.githubusercontent.com/104721095/180922675-16d605db-58ae-431b-a56d-45745e9e3593.png)
