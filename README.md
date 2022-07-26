@@ -26,7 +26,7 @@ myblog backend server
 
     각각 요청에 맞는 request를 하였습니다. 다만 비밀번호를 CHECK할때 GET요청을 사용하였는데 이 부분이 RESTFUL하지
     못하다고 생각합니다 PW를 CHECK할때는 어떤 request를 해야할지 좀 더 고민해봐야겠습니다.\
-    (2022-07-26) 추가
+    (2022-07-26) 추가  
     예제의 명세서와 같이 GET 메소드가 아닌 POST 메소드로 요청을 @RequestBody를 통해 비밀번호를 받아서 체크하게 수정하였습니다.
   
 4. 적절한 관심사 분리를 적용하였나요? (Controller, Repository, Service)  
