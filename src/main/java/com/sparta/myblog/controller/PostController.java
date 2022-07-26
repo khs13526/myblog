@@ -30,7 +30,8 @@ public class PostController {
     @GetMapping("/post")
     public ApiResult<List<com.sparta.myblog.domain.PostMapping>> getPosts() throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper().registerModule(new JavaTimeModule());
-        log.info(mapper.writeValueAsString(postRepository.findAll()));
+        log.info(mapper.writeValueAsString(postRepository.findAllBy(Sort.by(Sort.Direction.DESC, "createdAt"))));
+        log.info(postRepository.findAllBy(Sort.by(Sort.Direction.DESC, "createdAt")).toString());
         return ApiUtils.success(postRepository.findAllBy(Sort.by(Sort.Direction.DESC, "createdAt")));
     }
 
