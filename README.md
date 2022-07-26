@@ -31,11 +31,9 @@ myblog backend server
 
 
     View가 없는 API만을 만들었기때문에 RestController를 이용하였고 Repository는 JpaRepository를 상속 받아서 이용하였고 Service에는 update와 checkPassword
-    그리고 password를 복호화 해주는 encryptPassword 메소드를 만들어서 이용하였습니다.  
-    Controller 부분에서 checkPassword 값에 따라 리턴값이 다른데 이 부분이 맞는지 조금 헷갈립니다. 
+    그리고 password를 복호화하여 저장해주는 save 메소드를 만들어서 이용하였습니다.   
   
 5. 작성한 코드에서 빈(Bean)을 모두 찾아보세요!
-
 
     의존성 주입을 한 PostRepository와 PostService가 있을 것 같습니다.  
   
