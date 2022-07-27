@@ -44,6 +44,8 @@ myblog backend server
 5. 작성한 코드에서 빈(Bean)을 모두 찾아보세요!
 
     의존성 주입을 한 PostRepository와 PostService가 있을 것 같습니다.  
+    (2022-07-27 추가)  
+    @Component 어노테이션을 포함하고있는 PostController도 빈(Bean) 입니다!
   
   
 6. API 명세서 작성 가이드라인을 검색하여 직접 작성한 명세서와 비교해보세요!  
